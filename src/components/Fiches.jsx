@@ -22,7 +22,7 @@ function Fiches({ history }) {
   const [data, setData] = useState([])
 
   async function fetchData() {
-    const res = await fetch(process.env.REACT_APP_GRAPHQL, {
+    await fetch(process.env.REACT_APP_GRAPHQL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default () => {
+const C = () => {
   return (
     <ul>
       <li>…</li>
@@ -9,3 +9,5 @@ export default () => {
     </ul>
   )
 }
+
+export default C

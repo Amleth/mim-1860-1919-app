@@ -25,28 +25,26 @@ function Fiche({ history, match }) {
 
   const [data, setData] = useState({})
 
-  async function fetchData() {
-    const res = await fetch(process.env.REACT_APP_GRAPHQL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify({
-        query: query(id),
-      }),
-    })
-      .then((r) => r.json())
-      .then((data) => {
-        setData(data.data.mim_1860_1919[0])
-      })
-  }
-
   useEffect(() => {
+    async function fetchData() {
+      await fetch(process.env.REACT_APP_GRAPHQL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          query: query(id),
+        }),
+      })
+        .then((r) => r.json())
+        .then((data) => {
+          setData(data.data.mim_1860_1919[0])
+        })
+    }
+
     fetchData()
   }, [id])
-
-  console.log(data)
 
   if (Object.entries(data).length === 0) {
     return (
